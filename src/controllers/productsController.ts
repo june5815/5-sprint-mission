@@ -18,11 +18,11 @@ import { AuthenticatedHandler, ExpressHandler } from "../types/common";
 
 export const createProduct: AuthenticatedHandler = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { name, description, price, tags, images } = create(
     req.body,
-    CreateProductBodyStruct
+    CreateProductBodyStruct,
   );
   const userId = req.user?.userId;
   if (!userId) {
@@ -50,12 +50,12 @@ export async function getProduct(req: Request, res: Response): Promise<void> {
 
 export async function updateProduct(
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const { id } = create(req.params, IdParamsStruct);
   const { name, description, price, tags, images } = create(
     req.body,
-    UpdateProductBodyStruct
+    UpdateProductBodyStruct,
   );
   const userId = req.user?.userId;
   const existingProduct = await prismaClient.product.findUnique({
@@ -79,7 +79,7 @@ export async function updateProduct(
 
 export async function deleteProduct(
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const { id } = create(req.params, IdParamsStruct);
   const userId = req.user?.userId;
@@ -101,11 +101,11 @@ export async function deleteProduct(
 
 export async function getProductList(
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const { page, pageSize, orderBy, keyword } = create(
     req.query,
-    GetProductListParamsStruct
+    GetProductListParamsStruct,
   );
   const userId = req.user?.userId;
 
@@ -135,7 +135,7 @@ export async function getProductList(
 
 export async function createComment(
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const { id: productId } = create(req.params, IdParamsStruct);
   const { content } = create(req.body, CreateCommentBodyStruct);
@@ -164,7 +164,7 @@ export async function createComment(
 
 export async function getCommentList(
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const { id: productId } = create(req.params, IdParamsStruct);
   const { cursor, limit } = create(req.query, GetCommentListParamsStruct);

@@ -21,7 +21,7 @@ export interface TokenPayload {
 
 export function signToken(
   payload: TokenPayload,
-  options: jwt.SignOptions = {}
+  options: jwt.SignOptions = {},
 ): string {
   return jwt.sign(payload, JWT_SECRET, { expiresIn: "1h", ...options });
 }
@@ -32,7 +32,7 @@ export function verifyToken(token: string): JwtPayload {
 
 export function signRefreshToken(
   payload: TokenPayload,
-  options: jwt.SignOptions = {}
+  options: jwt.SignOptions = {},
 ): string {
   return jwt.sign(payload, JWT_SECRET, { expiresIn: "7d", ...options });
 }

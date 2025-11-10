@@ -8,7 +8,7 @@ import { AuthenticatedHandler } from "../types/common";
 
 export const updateComment: AuthenticatedHandler = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { id } = create(req.params, IdParamsStruct);
   const { content } = create(req.body, UpdateCommentBodyStruct);
@@ -37,7 +37,7 @@ export const updateComment: AuthenticatedHandler = async (
 
 export async function deleteComment(
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const { id } = create(req.params, IdParamsStruct);
   const userId = req.user?.userId;

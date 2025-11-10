@@ -15,7 +15,7 @@ userInfoRouter.patch("/me", authMiddleware, withAsync(updateMyInfo));
 userInfoRouter.patch(
   "/me/password",
   authMiddleware,
-  withAsync(changeMyPassword)
+  withAsync(changeMyPassword),
 );
 userInfoRouter.get("/me/products", authMiddleware, withAsync(getMyProducts));
 

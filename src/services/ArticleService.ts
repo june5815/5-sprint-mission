@@ -45,7 +45,7 @@ export function createArticle(data: ArticleCreateData): Promise<Article> {
 // 게시글 수정
 export function patchArticle(
   articleId: StringOrNumber,
-  data: ArticleCreateData
+  data: ArticleCreateData,
 ): Promise<Article> {
   return fetch(`${BASE_URL}/${articleId}`, {
     method: "PATCH",
@@ -59,7 +59,7 @@ export function patchArticle(
 
 // 게시글 삭제
 export function deleteArticle(
-  articleId: StringOrNumber
+  articleId: StringOrNumber,
 ): Promise<{ message: string }> {
   return fetch(`${BASE_URL}/${articleId}`, { method: "DELETE" }).then((res) => {
     if (!res.ok) throw new Error(`Error: ${res.status}`);

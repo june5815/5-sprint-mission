@@ -31,7 +31,7 @@ export async function getProductList({
   }
 }
 
-// 반환값에 as 
+// 반환값에 as
 export async function getProduct(productId: StringOrNumber) {
   try {
     const res = await fetch(`${BASE_URL}/${productId}`);
@@ -44,7 +44,7 @@ export async function getProduct(productId: StringOrNumber) {
   }
 }
 
-// 상품 생성 - 반환값에 as 
+// 상품 생성 - 반환값에 as
 export async function createProduct(data: ProductCreateData) {
   try {
     const res = await fetch(BASE_URL, {
@@ -61,10 +61,10 @@ export async function createProduct(data: ProductCreateData) {
   }
 }
 
-// 상품 수정 - 반환값에 as 
+// 상품 수정 - 반환값에 as
 export async function patchProduct(
   productId: StringOrNumber,
-  data: ProductCreateData
+  data: ProductCreateData,
 ) {
   try {
     const res = await fetch(`${BASE_URL}/${productId}`, {
@@ -81,7 +81,7 @@ export async function patchProduct(
   }
 }
 
-//상품 삭제 - 반환값에 as 
+//상품 삭제 - 반환값에 as
 export async function deleteProduct(productId: StringOrNumber) {
   try {
     const res = await fetch(`${BASE_URL}/${productId}`, { method: "DELETE" });

@@ -9,7 +9,7 @@ import {
 
 export const getMyInfo: AuthenticatedHandler = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const userId = req.user?.userId;
   if (!userId) {
@@ -38,7 +38,7 @@ export const getMyInfo: AuthenticatedHandler = async (
 
 export async function updateMyInfo(
   req: UpdateUserInfoRequest,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const userId = req.user?.userId;
   if (!userId) {
@@ -68,7 +68,7 @@ export async function updateMyInfo(
 
 export async function changeMyPassword(
   req: ChangePasswordRequest,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const userId = req.user?.userId;
   if (!userId) {
@@ -104,7 +104,7 @@ export async function changeMyPassword(
 
 export async function getMyProducts(
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const userId = req.user?.userId;
   if (!userId) {

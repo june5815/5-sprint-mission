@@ -18,7 +18,7 @@ import { AuthenticatedHandler, ExpressHandler } from "../types/common";
 
 export const createArticle: AuthenticatedHandler = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const userId = req.user?.userId;
   if (!userId) {
@@ -37,7 +37,7 @@ export const createArticle: AuthenticatedHandler = async (
 
 export const getArticle: ExpressHandler = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { id } = create(req.params, IdParamsStruct);
 
@@ -51,7 +51,7 @@ export const getArticle: ExpressHandler = async (
 
 export const updateArticle: AuthenticatedHandler = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { id } = create(req.params, IdParamsStruct);
   const data = create(req.body, UpdateArticleBodyStruct);
@@ -76,7 +76,7 @@ export const updateArticle: AuthenticatedHandler = async (
 
 export async function deleteArticle(
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const { id } = create(req.params, IdParamsStruct);
   const userId = req.user?.userId;
@@ -99,11 +99,11 @@ export async function deleteArticle(
 
 export async function getArticleList(
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const { page, pageSize, orderBy, keyword } = create(
     req.query,
-    GetArticleListParamsStruct
+    GetArticleListParamsStruct,
   );
   const userId = req.user?.userId;
 
@@ -129,7 +129,7 @@ export async function getArticleList(
 
 export async function createComment(
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const userId = req.user?.userId;
   if (!userId) {
@@ -161,7 +161,7 @@ export async function createComment(
 
 export async function getCommentList(
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const { id: articleId } = create(req.params, IdParamsStruct);
   const { cursor, limit } = create(req.query, GetCommentListParamsStruct);

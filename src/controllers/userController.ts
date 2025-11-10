@@ -16,7 +16,7 @@ import { ExpressHandler } from "../types/common";
 
 export const registerUser: ExpressHandler = async (
   req: RegisterRequest,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { email, nickname, password } = req.body;
   if (!email || !nickname || !password) {
@@ -26,13 +26,11 @@ export const registerUser: ExpressHandler = async (
     return;
   }
 
-
   const existingUser = await prismaClient.user.findUnique({ where: { email } });
   if (existingUser) {
     res.status(409).send({ message: "이미 가입된 이메일입니다." });
     return;
   }
-
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -44,14 +42,13 @@ export const registerUser: ExpressHandler = async (
     },
   });
 
-
   const { password: _, ...userData } = user;
   res.status(201).send(userData);
 };
 
 export async function loginUser(
   req: LoginRequest,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -75,7 +72,6 @@ export async function loginUser(
     return;
   }
 
-
   const token = signToken({
     userId: user.id,
     email: user.email,
@@ -91,7 +87,7 @@ export async function loginUser(
 
 export async function refreshToken(
   req: RefreshTokenRequest,
-  res: Response
+  res: Response,
 ): Promise<void> {
   const { refreshToken } = req.body;
   if (!refreshToken) {
